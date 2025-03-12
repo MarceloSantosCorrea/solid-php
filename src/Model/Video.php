@@ -15,7 +15,7 @@ class Video
     {
         $this->nome = $nome;
         $this->assistido = false;
-        $this->duracao = \DateInterval::createFromDateString('0');
+        $this->duracao = \DateInterval::createFromDateString('1 day');
     }
 
     public function assistir(): void
@@ -30,6 +30,6 @@ class Video
 
     public function recuperarUrl(): string
     {
-        return 'http://videos.alura.com.br/' . http_build_query(['nome' => $this->nome]);
+        return 'http://videos.alura.com.br/' . http_build_query(['nome' => (string)new Slug($this->nome)]);
     }
 }
